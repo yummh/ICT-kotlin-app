@@ -2,12 +2,7 @@ package screen
 
 class AppCategory {
     public fun showCategories() {
-        /*
-            1. 상품 카테고리 표기
-            2. 사용자 입력 받기
-            3. 사용자가 기대하는 값을 입력하지 않는 경우에 대한 처리
-        */
-        val categories = arrayOf("날씨", "복지", "챗봇")
+        val categories = arrayOf("날씨", "사고", "챗봇")
         for (category in categories) {
             println(category)
         }
@@ -24,6 +19,8 @@ class AppCategory {
         } else {
             if (categories.contains(selectedCategory)){
                 // TODO 2. 카테고리 목록 보여주기
+                val appProductList = AppProductList()
+                appProductList.showProducts(selectedCategory)
             }else{
                 // TODO 3. 카테고리 목록에 없는 값을 입력하는 경우
                 showErrorMessage(selectedCategory)
