@@ -18,29 +18,8 @@ class AppHome {
         )
     }
 
-    private fun showCategories() {
-        /*
-            1. 상품 카테고리 표기
-            2. 사용자 입력 받기
-            3. 사용자가 기대하는 값을 입력하지 않는 경우에 대한 처리
-        */
-        val categories = arrayOf("날씨", "복지", "챗봇")
-        for (category in categories) {
-            println(category)
-        }
-        println("메인화면으로 이동하려면 #을 입력해주세요")
-
-        var selectedCategory = readLine()
-        while (selectedCategory.isNullOrBlank()) {
-            println("원하는 카테고리를 입력해주세요")
-            selectedCategory = readLine()
-        }
-
-        if (selectedCategory == "#") {
-            // TODO 1. 메인화면 이동
-        } else {
-            // TODO 2. 카테고리 목록 보여주기
-            // TODO 3. 카테고리 목록에 없는 값을 입력하는 경우
-        }
+    private fun showCategories(){
+        val appCategory = AppCategory()
+        appCategory.showCategories()
     }
 }
