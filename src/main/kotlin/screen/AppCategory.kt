@@ -8,13 +8,14 @@ Step 2. 사용자 입력값 요청 처리 공통화
 Step 3. 프로젝트 전역에서 참조하는 상수
 */
 
-class AppCategory {
+class AppCategory : Screen() {
     public fun showCategories() {
-        val categories = arrayOf("날씨", "사고", "챗봇")
+        ScreenStack.push(this)
+        val categories = arrayOf("날씨", "사고", "챗봇", "공지사항", "환경설정")
         for (category in categories) {
             println(category)
         }
-        println("메인화면으로 이동하려면 #을 입력해주세요")
+        println("즐겨찾기로 이동하려면 #을 입력해주세요")
 
         val selectedCategory = readLine().getNotEmptyString()
 

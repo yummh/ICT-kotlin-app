@@ -6,7 +6,7 @@ import data.CartItems
 import data.Product
 import extension.getNotEmptyString
 
-class AppProductList {
+class AppProductList : Screen()  {
     private val products = arrayOf(
         Product(categoryLabel = "날씨", name = "날씨 정보"),
         Product(categoryLabel = "사고", name = "인명피해 사고"),
@@ -19,6 +19,7 @@ class AppProductList {
     }
 
     fun showProducts(selectedCategory: String) {
+        ScreenStack.push(this)
         val categoryProducts = categories[selectedCategory]
         if (!categoryProducts.isNullOrEmpty()) {   // 선택한 물품이 하나라도 존재하면 안내
             println(
