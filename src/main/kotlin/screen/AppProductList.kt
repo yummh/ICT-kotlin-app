@@ -6,7 +6,7 @@ import data.CartItems
 import data.Product
 import extension.getNotEmptyString
 
-class AppProductList : Screen()  {
+class AppProductList(private val selectedCategory: String) : Screen()  {
     private val products = arrayOf(
         Product(categoryLabel = "날씨", name = "날씨 정보"),
         Product(categoryLabel = "사고", name = "인명피해 사고"),
@@ -18,7 +18,7 @@ class AppProductList : Screen()  {
         product.categoryLabel
     }
 
-    fun showProducts(selectedCategory: String) {
+    fun showProducts() {
         ScreenStack.push(this)
         val categoryProducts = categories[selectedCategory]
         if (!categoryProducts.isNullOrEmpty()) {   // 선택한 물품이 하나라도 존재하면 안내
@@ -32,13 +32,13 @@ class AppProductList : Screen()  {
             categoryProducts.forEachIndexed { index, product ->
                 println("${index}. ${product.name}")
             }
-            showCartOption(categoryProducts, selectedCategory)
+            showCartOption(categoryProducts)
         } else {
             showEmptyProductMessage(selectedCategory)
         }
     }
 
-    private fun showCartOption(categoryProduct: List<Product>, selectedCategory: String){
+    private fun showCartOption(categoryProduct: List<Product>){
         println(
             """
                 $LINE_DIVIDER
@@ -56,10 +56,13 @@ class AppProductList : Screen()  {
                 val mainScreen = MainScreen()
                 mainScreen.showCartItems()
             } else if (answer == "*"){
-                showProducts(selectedCategory)
+                showProducts()
             } else{
                 // TODO 그 외 값을 입력한 경우에 대한 처리
             }
+        }?:kotlin.run{
+           println("$selectedIndex 번은 목록에 없는 상품번호입니다. 다시 입력해주세요.")
+           showProducts()
         }
     }
 

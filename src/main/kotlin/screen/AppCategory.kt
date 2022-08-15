@@ -26,8 +26,8 @@ class AppCategory : Screen() {
         } else {
             if (categories.contains(selectedCategory)){
                 // TODO 2. 카테고리 목록 보여주기
-                val appProductList = AppProductList()
-                appProductList.showProducts(selectedCategory)
+                val appProductList = AppProductList(selectedCategory)
+                appProductList.showProducts()
             }else{
                 // TODO 3. 카테고리 목록에 없는 값을 입력하는 경우
                 showErrorMessage(selectedCategory)
