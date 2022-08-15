@@ -1,5 +1,7 @@
 package screen
 
+import com.sun.tools.javac.Main
+import data.CartItems
 import data.Product
 
 class AppProductList {
@@ -24,12 +26,37 @@ class AppProductList {
             """.trimIndent()
             )
 
-            val productSize = categoryProducts.size
-            for (index in 0  until  productSize) {
-                println("${index}.${categoryProducts[index].name}")
+            categoryProducts.forEachIndexed { index, product ->
+                println("${index}. ${product.name}")
             }
+            showCartOption(categoryProducts, selectedCategory)
         } else {
             showEmptyProductMessage(selectedCategory)
+        }
+    }
+
+    private fun showCartOption(categoryProduct: List<Product>, selectedCategory: String){
+        println(
+            """
+                ***====================***
+                즐겨찾기에 담을 상품 번호를 선택해주세요.
+            """.trimIndent()
+        )
+        val selectedIndex = readLine()?.toIntOrNull()!!
+        categoryProduct.getOrNull(selectedIndex)?.let {product ->
+            CartItems.addProduct(product)
+
+            println("=> 즐겨찾기로 이동하시려면 #을, 계속 앱을 사용하시려면 *을 입력해주세요.")
+
+            val answer = readLine()
+            if (answer == "#"){
+                val mainScreen = MainScreen()
+                mainScreen.showCartItems()
+            } else if (answer == "*"){
+                showProducts(selectedCategory)
+            } else{
+                // TODO 그 외 값을 입력한 경우에 대한 처리
+            }
         }
     }
 
