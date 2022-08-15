@@ -1,5 +1,6 @@
 package screen
 
+import LINE_DIVIDER
 import data.CartItems
 
 class MainScreen {
@@ -11,7 +12,7 @@ class MainScreen {
                 products.keys.joinToString(
                     separator = ", \n",
                     prefix = """
-                        ***====================***
+                        $LINE_DIVIDER
                         즐겨찾기에 담은 카테고리 목록입니다.
                     """.trimIndent()
                 ) {product ->

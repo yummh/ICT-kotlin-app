@@ -1,5 +1,6 @@
 package screen
 
+import LINE_DIVIDER
 import com.sun.tools.javac.Main
 import data.CartItems
 import data.Product
@@ -22,7 +23,7 @@ class AppProductList {
         if (!categoryProducts.isNullOrEmpty()) {   // 선택한 물품이 하나라도 존재하면 안내
             println(
                 """
-                ***====================***
+                $LINE_DIVIDER
                 선택하신 [$selectedCategory] 카테고리 상품입니다.
             """.trimIndent()
             )
@@ -39,7 +40,7 @@ class AppProductList {
     private fun showCartOption(categoryProduct: List<Product>, selectedCategory: String){
         println(
             """
-                ***====================***
+                $LINE_DIVIDER
                 즐겨찾기에 담을 상품 번호를 선택해주세요.
             """.trimIndent()
         )
