@@ -1,5 +1,7 @@
 package screen
 
+import extension.getNotEmptyString
+
 /*
 Step 1. 장바구니에 추가한 상품 관리
 Step 2. 사용자 입력값 요청 처리 공통화
@@ -14,11 +16,7 @@ class AppCategory {
         }
         println("메인화면으로 이동하려면 #을 입력해주세요")
 
-        var selectedCategory = readLine()
-        while (selectedCategory.isNullOrBlank()) {
-            println("원하는 카테고리를 입력해주세요")
-            selectedCategory = readLine()
-        }
+        val selectedCategory = readLine().getNotEmptyString()
 
         if (selectedCategory == "#") {
             // TODO 1. 메인화면 이동

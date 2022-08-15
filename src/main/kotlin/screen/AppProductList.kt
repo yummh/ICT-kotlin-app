@@ -3,6 +3,7 @@ package screen
 import com.sun.tools.javac.Main
 import data.CartItems
 import data.Product
+import extension.getNotEmptyString
 
 class AppProductList {
     private val products = arrayOf(
@@ -48,7 +49,7 @@ class AppProductList {
 
             println("=> 즐겨찾기로 이동하시려면 #을, 계속 앱을 사용하시려면 *을 입력해주세요.")
 
-            val answer = readLine()
+            val answer = readLine().getNotEmptyString()
             if (answer == "#"){
                 val mainScreen = MainScreen()
                 mainScreen.showCartItems()
